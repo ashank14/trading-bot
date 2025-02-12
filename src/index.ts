@@ -23,7 +23,7 @@ async function main(userId:string){
     });
 
     console.log(newTweets);*/
-    const res=getAddress("hello");
+    const res=await getAddress("hello");
     console.log(res);
 }
 

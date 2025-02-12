@@ -22,7 +22,7 @@ function main(userId) {
         });
     
         console.log(newTweets);*/
-        const res = (0, get_Address_1.getAddress)("hello");
+        const res = yield (0, get_Address_1.getAddress)("hello");
         console.log(res);
     });
 }

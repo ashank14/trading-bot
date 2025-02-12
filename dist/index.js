@@ -1,2 +1,29 @@
 "use strict";
-console.log("h");
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const get_Address_1 = require("./get-Address");
+//get user from username
+//create a list of usernames and get their userids into an array 
+//send user to main to get tweets in a loop
+function main(userId) {
+    return __awaiter(this, void 0, void 0, function* () {
+        //get tweets 
+        /*const newTweets: Tweet[]= await getTweets(userId);
+        newTweets.map(x=>{
+            const newAddress=getAddress(x.content); //get token/contract address from llm
+        });
+    
+        console.log(newTweets);*/
+        const res = (0, get_Address_1.getAddress)("hello");
+        console.log(res);
+    });
+}
+main("2758205289");

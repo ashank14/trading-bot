@@ -20,7 +20,7 @@ export async function swap(address:string,amount:number ){
           API_URLS.SWAP_HOST
         }/compute/swap-base-in?inputMint=${NATIVE_MINT }&outputMint=${address}&amount=${amount}&slippageBps=${
           slippage * 100}&txVersion=${0}`
-      ) // Use the URL xxx/swap-base-in or xxx/swap-base-out to define the swap type. 
+      ) // Use the URL xxx/swap-base-in or xxx/swap-base-out to define the swap type
        
 
 } 

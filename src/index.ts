@@ -22,7 +22,7 @@ const SOL_AMOUNT= 1*LAMPORTS_PER_SOL;
 
 async function main(userId:string){
     //get tweets 
-    const newTweets: Tweet[]= await getTweets(userId);
+    /*const newTweets: Tweet[]= await getTweets(userId);
     
     for(let tweet of newTweets){
         const newAddress=await getAddress(tweet.content);
@@ -34,7 +34,11 @@ async function main(userId:string){
 
     console.log(newTweets);
     const res=await getAddress("hello");
-    console.log(res); 
+    console.log(res); */
+
+    const add="mntJrassAUTAxe14EX6a664x89YMGbKqUFV4qEERVee";
+    swap(add,SOL_AMOUNT);
+
 }
 
 

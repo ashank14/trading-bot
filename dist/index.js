@@ -9,7 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const get_Address_1 = require("./get-Address");
+const swap_1 = require("./swap");
+const web3_js_1 = require("@solana/web3.js");
+const SOL_AMOUNT = 1 * web3_js_1.LAMPORTS_PER_SOL;
 //get user from username
 //create a list of usernames and get their userids into an array 
 //send user to main to get tweets in a loop
@@ -17,13 +19,20 @@ function main(userId) {
     return __awaiter(this, void 0, void 0, function* () {
         //get tweets 
         /*const newTweets: Tweet[]= await getTweets(userId);
-        newTweets.map(x=>{
-            const newAddress=getAddress(x.content); //get token/contract address from llm
-        });
+        
+        for(let tweet of newTweets){
+            const newAddress=await getAddress(tweet.content);
     
-        console.log(newTweets);*/
-        const res = yield (0, get_Address_1.getAddress)("hello");
-        console.log(res);
+            if(newAddress!=null){
+                await swap(newAddress,SOL_AMOUNT);
+            }
+        }
+    
+        console.log(newTweets);
+        const res=await getAddress("hello");
+        console.log(res); */
+        const add = "mntJrassAUTAxe14EX6a664x89YMGbKqUFV4qEERVee";
+        (0, swap_1.swap)(add, SOL_AMOUNT);
     });
 }
 main("2758205289");

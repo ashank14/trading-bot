@@ -11,7 +11,7 @@ interface Tweet {
 }
 
 
-const SOL_AMOUNT= 1*LAMPORTS_PER_SOL;
+const SOL_AMOUNT= 0.001*LAMPORTS_PER_SOL;
 //get user from username
 //create a list of usernames and get their userids into an array 
 

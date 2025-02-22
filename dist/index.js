@@ -17,8 +17,9 @@ const SOL_AMOUNT = 1 * web3_js_1.LAMPORTS_PER_SOL;
 //send user to main to get tweets in a loop
 function main(userId) {
     return __awaiter(this, void 0, void 0, function* () {
-        //get tweets 
-        /*const newTweets: Tweet[]= await getTweets(userId);
+        /*
+        //get tweets
+        const newTweets: Tweet[]= await getTweets(userId);
         
         for(let tweet of newTweets){
             const newAddress=await getAddress(tweet.content);
@@ -30,9 +31,11 @@ function main(userId) {
     
         console.log(newTweets);
         const res=await getAddress("hello");
-        console.log(res); */
-        const add = "mntJrassAUTAxe14EX6a664x89YMGbKqUFV4qEERVee";
-        (0, swap_1.swap)(add, SOL_AMOUNT);
+        console.log(res);
+    
+        const add="mntJrassAUTAxe14EX6a664x89YMGbKqUFV4qEERVee";
+        await swap(add,SOL_AMOUNT);*/
+        yield (0, swap_1.swap)("419ZC5PrQsdj4iXEUqsnPnubk4trxNbFa81Qvz3jcpgj", SOL_AMOUNT);
     });
 }
 main("2758205289");

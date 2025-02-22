@@ -18,7 +18,7 @@ const spl_token_1 = require("@solana/spl-token");
 const axios_1 = __importDefault(require("axios"));
 const raydium_sdk_v2_1 = require("@raydium-io/raydium-sdk-v2");
 const bs58_1 = __importDefault(require("bs58"));
-const connection = new web3_js_1.Connection("https://solana-mainnet.g.alchemy.com/v2/Mp5gtp72KbToY9ANJEg7n_iCg5coojtW");
+const connection = new web3_js_1.Connection("https://mainnet.helius-rpc.com/?api-key=c7cecebd-d2b8-47c3-9317-3cbca20c79f7");
 const owner = web3_js_1.Keypair.fromSecretKey(bs58_1.default.decode("2CjWX2pWbeX39NJLEmLiDPU1jL7HK9NFxAcbQaAMuCvtndibx87V2CMnvoxkK4ZEtF82KACDEykxSW12D6rE2Ruu"));
 //3ADmrXxgrPWjwANzPvqtmfR2sAfwhci8DH62vUodHx6wrdKXCtKFReCpuLLg47jZTRGNwZyqU77y4UtXj9eSsbDK
 const isV0Tx = true;
@@ -29,6 +29,12 @@ function swap(address, amount) {
         const { data } = yield axios_1.default.get(`${raydium_sdk_v2_1.API_URLS.BASE_HOST}${raydium_sdk_v2_1.API_URLS.PRIORITY_FEE}`);
         //get quote
         const { data: swapResponse } = yield axios_1.default.get(`${raydium_sdk_v2_1.API_URLS.SWAP_HOST}/compute/swap-base-in?inputMint=${spl_token_1.NATIVE_MINT}&outputMint=${address}&amount=${amount}&slippageBps=${slippage * 100}&txVersion=V0 `); // Use the URL xxx/swap-base-in or xxx/swap-base-out to define the swap type
+        console.log(swapResponse);
+        const mintInfo = yield connection.getParsedAccountInfo(new web3_js_1.PublicKey(address));
+        console.log("inputAmount:", swapResponse.data.inputAmount);
+        console.log("outputAmount:", swapResponse.data.outputAmount);
+        const currentprice = Number((swapResponse.data.outputAmount / swapResponse.data.inputAmount));
+        console.log(currentprice);
         //create txn
         const { data: swapTransactions } = yield axios_1.default.post(`${raydium_sdk_v2_1.API_URLS.SWAP_HOST}/transaction/swap-base-in`, {
             computeUnitPriceMicroLamports: String(data.data.default.h),

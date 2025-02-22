@@ -4,14 +4,15 @@ import { NATIVE_MINT } from '@solana/spl-token'
 import axios from 'axios'
 import { API_URLS } from '@raydium-io/raydium-sdk-v2'
 import bs58 from "bs58"; 
+require("dotenv").config();
 
  
 
+
 const connection=new Connection("https://mainnet.helius-rpc.com/?api-key=c7cecebd-d2b8-47c3-9317-3cbca20c79f7");
-const owner = Keypair.fromSecretKey(bs58.decode("2CjWX2pWbeX39NJLEmLiDPU1jL7HK9NFxAcbQaAMuCvtndibx87V2CMnvoxkK4ZEtF82KACDEykxSW12D6rE2Ruu"));
+const owner = Keypair.fromSecretKey(bs58.decode(process.env.PRIVATE_KEY!));
 
 
-//3ADmrXxgrPWjwANzPvqtmfR2sAfwhci8DH62vUodHx6wrdKXCtKFReCpuLLg47jZTRGNwZyqU77y4UtXj9eSsbDK
 const isV0Tx = true;
 
 const slippage=10;
@@ -33,10 +34,7 @@ export async function swap(address:string,amount:number ){
           slippage * 100}&txVersion=V0 `    
       ) // Use the URL xxx/swap-base-in or xxx/swap-base-out to define the swap type
       console.log(swapResponse);
-
-    
       
-
       const tokensReceived=swapResponse.data.outputAmount;
 
       
@@ -92,7 +90,7 @@ export async function swap(address:string,amount:number ){
 
 
 
-      
+
       //track pnl
       const profit=20;
       const loss=15;

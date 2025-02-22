@@ -85,6 +85,7 @@ export async function swap(address:string,amount:number ){
           'confirmed'
         )
         console.log(`${idx} transaction confirmed`)
+        console.log("bought");
       }
 
 
@@ -175,6 +176,7 @@ export async function swap(address:string,amount:number ){
                 'confirmed'
               )
               console.log(`${idx} transaction confirmed`)
+              console.log("sold");
             }
 
 
